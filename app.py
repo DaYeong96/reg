@@ -68,7 +68,7 @@ st.dataframe(new_x_df)
 # st.dataframe(data_concat)
 
 
-if new_x_df[['station']]==1:
+if new_x_df[['station']].values==1:
     data = {'station_1' : [1], 'station_0' : [0]}
     data_cat2 = pd.DataFrame(data)
 else:
