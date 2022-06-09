@@ -84,8 +84,8 @@ st.dataframe(data_concat)
 
 
 data_con_scale = scaler_call.transform(data_concat)
-# result = model_call.predict(data_con_scale) 
+result = model_call.predict(data_con_scale) 
 
-# #예측결과를 화면에 뿌려준다. 
-# st.subheader('결과는 다음과 같습니다.')
-# st.write('예상되는 렌탈료:', result[0])
+#예측결과를 화면에 뿌려준다. 
+st.subheader('결과는 다음과 같습니다.')
+st.write('예상되는 렌탈료:', result[0])
