@@ -50,9 +50,20 @@ new_x_df = user_input_features()
 st.dataframe(new_x_df)
 
 st.dataframe(new_x_df[['station']])
-st.write(new_x_df['station'].dtype)
 
-data_cat2 = ohe_station.transform(new_x_df[['station']])
+
+
+from sklearn.preprocessing import OneHotEncoder
+
+ohe_station = OneHotEncoder(sparse=False)
+
+# data_cat = ohe.fit_transform(data[['station']])
+# new_data = pd.concat([data.drop(columns=['station']),pd.DataFrame(data_cat, columns=['station_' + str(col) for col in ohe.categories_[0]])], axis=1)
+
+
+
+
+data_cat2 = ohe_station.fit_transform(new_x_df[['station']])
 data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
 
 
