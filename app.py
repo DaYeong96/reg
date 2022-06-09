@@ -70,7 +70,7 @@ data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_ca
 
 
 
-# data_con_scale = scaler_call.transform(data_concat)
+data_con_scale = scaler_call.transform(data_concat)
 # result = model_call.predict(data_con_scale) 
 
 # #예측결과를 화면에 뿌려준다. 
