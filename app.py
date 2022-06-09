@@ -18,7 +18,7 @@ def user_input_features():
     road = st.sidebar.slider("고속도로: ",0, 25)
     mange = st.sidebar.slider("관리비: ", 100, 800)
     kid = st.sidebar.number_input("아이들비중: ")
-    station =int(st.sidebar.radio("역근처 여부: ", ('0','1')))
+    station =st.sidebar.slider("역근처 여부: ", 0,1)
 
     data = {'dist' : [dist],
             'office' : [office],
@@ -53,7 +53,7 @@ st.dataframe(new_x_df)
 st.dataframe(new_x_df[['station']])
 st.write(new_x_df['station'].dtype)
 
-data_cat2 = ohe_station.transform(new_x_df[['station']][:1])
+data_cat2 = ohe_station.transform(new_x_df[['station']])
 data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
 
 
