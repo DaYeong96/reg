@@ -40,14 +40,14 @@ st.title('렌탈료 예측 서비스')
 st.markdown('* 우측에 데이터를 입력해주세요')
 
 
-# ohe_station = joblib.load('ohe_station.joblib')
-# scaler_call = joblib.load('scaler.save')
-# model_call = joblib.load("model.pkl")
+ohe_station = joblib.load('ohe_station.joblib')
+scaler_call = joblib.load('scaler.save')
+model_call = joblib.load("model.pkl")
 # #model_call = pickle.load(open('model.pkl', 'rb')
 
 
-# new_x_df = user_input_features()
-# st.dataframe(new_x_df)
+new_x_df = user_input_features()
+st.dataframe(new_x_df)
 
 # st.dataframe(new_x_df[['station']])
 
