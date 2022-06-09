@@ -1,12 +1,9 @@
 
-#streamlit 라이브러리를 불러오기
 import streamlit as st
-#AI모델을 불러오기 위한 joblib 불러오기
 import joblib
 import pandas as pd
 #import pickle 
 
-# st를 이용하여 타이틀과 입력 방법을 명시한다.
 
 def user_input_features():
     dist = st.sidebar.number_input("거리: ")
