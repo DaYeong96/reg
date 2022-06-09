@@ -8,3 +8,4 @@ ptyprocess
 seaborn
 streamlit
 scikit-learn
+pickle 
