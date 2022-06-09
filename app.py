@@ -4,6 +4,7 @@ import streamlit as st
 #AI모델을 불러오기 위한 joblib 불러오기
 import joblib
 import pandas as pd
+import pickle 
 
 # st를 이용하여 타이틀과 입력 방법을 명시한다.
 
@@ -42,9 +43,10 @@ st.title('렌탈료 예측 서비스')
 st.markdown('* 우측에 데이터를 입력해주세요')
 
 
-ohe_station = joblib.load("ohe_station.pkl")
-scaler_call = joblib.load("scaler.pkl")
-model_call = joblib.load("model.pkl")
+ohe_station = joblib.load('ohe_station.joblib')
+scaler_call = joblib.load('scaler.save')
+#model_call = joblib.load("model.pkl")
+model_call = pickle.load(open('model.pkl', 'rb')
 
 
 new_x_df = user_input_features()
@@ -53,7 +55,7 @@ st.dataframe(new_x_df)
 st.dataframe(new_x_df[['station']])
 st.write(new_x_df['station'].dtype)
 
-data_cat2 = ohe_station.transform(new_x_df['station'])
+data_cat2 = ohe_station.transform(new_x_df[['station']])
 data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
 
 
