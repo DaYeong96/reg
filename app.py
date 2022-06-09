@@ -77,10 +77,6 @@ else:
 
 data_concat = pd.concat([new_x_df.drop(columns=['station']),data_cat2], axis=1)
 
-st.dataframe(data_concat)
-
-
-
 
 
 data_con_scale = scaler_call.transform(data_concat)
