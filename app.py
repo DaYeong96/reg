@@ -40,39 +40,39 @@ st.title('렌탈료 예측 서비스')
 st.markdown('* 우측에 데이터를 입력해주세요')
 
 
-ohe_station = joblib.load('ohe_station.joblib')
-scaler_call = joblib.load('scaler.save')
-model_call = joblib.load("model.pkl")
-#model_call = pickle.load(open('model.pkl', 'rb')
+# ohe_station = joblib.load('ohe_station.joblib')
+# scaler_call = joblib.load('scaler.save')
+# model_call = joblib.load("model.pkl")
+# #model_call = pickle.load(open('model.pkl', 'rb')
 
 
-new_x_df = user_input_features()
-st.dataframe(new_x_df)
+# new_x_df = user_input_features()
+# st.dataframe(new_x_df)
 
-st.dataframe(new_x_df[['station']])
-
-
-
-from sklearn.preprocessing import OneHotEncoder
-
-ohe_station = OneHotEncoder(sparse=False)
-
-# data_cat = ohe.fit_transform(data[['station']])
-# new_data = pd.concat([data.drop(columns=['station']),pd.DataFrame(data_cat, columns=['station_' + str(col) for col in ohe.categories_[0]])], axis=1)
+# st.dataframe(new_x_df[['station']])
 
 
 
+# from sklearn.preprocessing import OneHotEncoder
 
-data_cat2 = ohe_station.fit_transform(new_x_df[['station']])
-data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
+# ohe_station = OneHotEncoder(sparse=False)
+
+# # data_cat = ohe.fit_transform(data[['station']])
+# # new_data = pd.concat([data.drop(columns=['station']),pd.DataFrame(data_cat, columns=['station_' + str(col) for col in ohe.categories_[0]])], axis=1)
 
 
 
 
+# data_cat2 = ohe_station.fit_transform(new_x_df[['station']])
+# data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
 
-data_con_scale = scaler_call.transform(data_concat)
-result = model_call.predict(data_con_scale) 
 
-#예측결과를 화면에 뿌려준다. 
-st.subheader('결과는 다음과 같습니다.')
-st.write('예상되는 렌탈료:', result[0])
+
+
+
+# data_con_scale = scaler_call.transform(data_concat)
+# result = model_call.predict(data_con_scale) 
+
+# #예측결과를 화면에 뿌려준다. 
+# st.subheader('결과는 다음과 같습니다.')
+# st.write('예상되는 렌탈료:', result[0])
