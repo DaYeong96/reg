@@ -53,19 +53,32 @@ st.dataframe(new_x_df)
 
 
 
-from sklearn.preprocessing import OneHotEncoder
+# from sklearn.preprocessing import OneHotEncoder
 
-ohe_station = OneHotEncoder(sparse=False)
+# ohe_station = OneHotEncoder(sparse=False)
 
-# # data_cat = ohe.fit_transform(data[['station']])
-# # new_data = pd.concat([data.drop(columns=['station']),pd.DataFrame(data_cat, columns=['station_' + str(col) for col in ohe.categories_[0]])], axis=1)
-
-
+# # # data_cat = ohe.fit_transform(data[['station']])
+# # # new_data = pd.concat([data.drop(columns=['station']),pd.DataFrame(data_cat, columns=['station_' + str(col) for col in ohe.categories_[0]])], axis=1)
 
 
-data_cat2 = ohe_station.fit_transform(new_x_df[['station']])
-data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
+
+
+# data_cat2 = ohe_station.fit_transform(new_x_df[['station']])
+# data_concat = pd.concat([new_x_df.drop(columns=['station']),pd.DataFrame(data_cat2, columns=['station_' + str(col) for col in ohe_station.categories_[0]])], axis=1)
+# st.dataframe(data_concat)
+
+
+if new_x_df[['station']]==1:
+    data = {'station_1' : [1], 'station_0' : [0]}
+    data_cat2 = pd.DataFrame(data)
+else:
+    data = {'station_1' : [0], 'station_0' : [1]}
+    data_cat2 = pd.DataFrame(data)
+
+data_concat = pd.concat([new_x_df.drop(columns=['station']),data_cat2], axis=1)
+
 st.dataframe(data_concat)
+
 
 
 
